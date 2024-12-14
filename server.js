@@ -4,15 +4,15 @@ const app = express()
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const flash = require('express-flash')
 const logger = require('morgan')
 
 //declare variables that store paths to routes folders
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/expense')
-const budgetRoutes = require('./routes/budget')
+const expenseRoutes = require('./routes/expense')
+// const budgetRoutes = require('./routes/budget')
 
 //module to read .env file
 require('dotenv').config({path: './config/.env'})
@@ -35,7 +35,7 @@ app.use(
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      store: MongoStore.create({ mongoUrl: process.env.DB_STRING, }),
     })
   )
   
@@ -48,7 +48,7 @@ app.use(flash())
 
 // middleware - for user requests
 app.use('/', mainRoutes)
-app.use('/budget', budgetRoutes)
+// app.use('/budget', budgetRoutes)
 app.use('/expense', expenseRoutes)
  
 app.listen(process.env.PORT, ()=>{
