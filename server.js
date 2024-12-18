@@ -11,7 +11,7 @@ const logger = require('morgan')
 //declare variables that store paths to routes folders
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const expenseRoutes = require('./routes/expense')
+const expenseRoutes = require('./routes/expenses')
 // const budgetRoutes = require('./routes/budget')
 
 //module to read .env file
@@ -49,7 +49,7 @@ app.use(flash())
 // middleware - for user requests
 app.use('/', mainRoutes)
 // app.use('/budget', budgetRoutes)
-app.use('/expense', expenseRoutes)
+app.use('/expenses', expenseRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port ${process.env.PORT}`)

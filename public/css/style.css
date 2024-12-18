@@ -1,0 +1,277 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*****************************************************************
+GENERAL STYLES
+******************************************************************/
+
+/*Typography*/
+
+body{
+    color: #1D2547;
+    font: 400 16px/1.5 'Source Sans 3', sans-serif;
+  }
+
+  h1,h2,h3,h4 {
+	font-weight: 700; 
+	line-height: 1.2;
+	display: block;
+  }
+  h1 {
+	  font-size: 3rem;
+  }
+  h2{
+	  font-size: 2rem;
+  }  
+  h3{
+	  font-size: 1.5rem;
+  }  
+  h4{
+	  font-size: 1.2rem;
+  }
+  p{
+	margin: 20px 0;
+  }
+  .textCenter{
+	text-align: center;
+  }
+  strong{
+	font-weight: 700;
+  }
+	/*navigation*/
+	a{
+		text-decoration: none;
+		font-weight: 500;
+	}
+	a:hover{
+		color: #f75940;
+	}
+
+	nav a {
+		padding: 0 10px;
+	}
+
+	.navBtn{
+		width: fit-content;
+		padding: 5px 10px;
+		border: 1px solid #f75940;
+		background-color: #f75940;
+		border-radius: 99px;
+		color: white;
+	}
+	.navBtn:hover{
+		color: white;
+		background-color: #fa6750;
+		border: 1px solid #fa6750;
+	}
+
+	.logo {
+		font-size: 2rem;
+		font-weight: 700;
+		color: #f75940;
+	}
+	.primaryBtn{
+		width: fit-content;
+		padding: 1% 2%;
+		border: 1px solid #f75940;
+		background-color: #f75940;
+		border-radius: 99px;
+		color: white;
+	}
+	.primaryBtn:hover{
+		color: white;
+		background-color: #fa6750;
+		border: 1px solid #fa6750;
+	}
+	/*Form*/
+	form{
+		font: 1rem 'source sans 3'
+	}
+
+
+/*****************************************************************
+Layout
+******************************************************************/
+
+/*header*/
+	nav{
+		height: 80px;
+	}
+
+/*sections*/
+	section{
+		padding: 5% 0;
+	}
+
+	.innerContainer{
+		width: 70%;
+		margin: 0 auto;
+	}
+/*footer*/
+	footer{
+		background-color: #f3f4f6;
+		margin-bottom: -20px;
+		height: 40px;
+		padding: 2%;
+	}
+
+
+/*****************************************************************
+Modules
+******************************************************************/
+
+/*flex boxes*/
+	.flexBox{
+		display: flex;
+		align-items: center;
+	}
+
+	.twoCol{
+		justify-content: space-between;
+	}
+	.gap2{
+		gap: 2%;
+	}
+
+/*image & text boxes*/
+	.imageBox, .textBox, .loginBox{
+		flex-basis: 50%;
+	}
+	.imageBox{
+		max-width: 700px;
+	}
+	.image{
+		border-radius: 30px;
+		border: 1px solid lightgray;
+	}
+	.loginBox{
+		display: flex;
+		flex-basis: 50%;
+		height: 100vh;
+		box-shadow: 10px 0 15px rgba(59, 52, 52, 0.363) ;
+		z-index: 5;
+	}
+	.centerBox{
+		width: 100%;
+		align-content: center;
+		justify-content: center;
+		justify-items: center;
+	}
+	.card{
+		border: 1px solid #f3f4f6;
+		border-radius: 30px;
+		background-color: #f3f4f6;
+		width: 50%;
+		padding: 2%
+	}
+
+
+/*Hero*/
+	.hero{
+		text-align: center;
+	}
+
+/*Forms*/
+	input[type=email], input[type=password], input[type=text] {
+		width: 90%;
+		height: 40px;
+		margin: 10px;
+	}
+	input[type=submit]{
+		width: fit-content;
+		padding: 1% 5%;
+		border: 1px solid #f75940;
+		background-color: #f75940;
+		border-radius: 99px;
+		color: white;
+	}
+	input[type=submit]:hover{
+		color: white;
+		background-color: #fa6750;
+		border: 1px solid #fa6750;
+	}
+	input[type=checkbox]{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+	}
+	input[type=text].appForm{
+		height: 40px;
+		width: 40%;
+	}
+	select.appForm{
+		height: 40px;
+		width: 40%;
+		margin: 10px;
+		padding: 1% 0;
+	}
+
+/*****************************************************************
+Images
+******************************************************************/
+.loginBackground{
+	flex-basis: 50%;
+	height: 100vh;
+	background: no-repeat url(/assets/googlemaps.png) center center;
+	background-size: cover;
+
+}
+
+
+
+
+/*****************************************************************
+App
+******************************************************************/
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+.not{
+    text-decoration: underline;
+}

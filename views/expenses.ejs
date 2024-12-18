@@ -19,56 +19,54 @@
     <header>
         <div class="innerContainer">
             <nav class="flexBox twoCol">
-                <a href="/index" class="logo">EscapePlan</a>
+                <a href="/index" class="logo">InsightGrid</a>
                 <ul class="flexBox">
-                    <li><a href="/login" class="borderBottom"> Packing List</a></li>
-                    <li><a href="/signup"> Itinerary</a></li>
-                    <li><a href="/budget"> Budget</a></li>
                     <a href="/logout">Logout</a> 
                 </ul>
             </nav>
     </header>
     <section class="innerContainer">
+        <!-- Hero -->
         <div class="hero">
-            <h1><%= user.userName %>'s Packing List</h1>
-            <p>Create a list of everything you need for your trip! We already put on some essentials for you.</p>
-            <form action="/todos/createTodo" method='POST' class="flexBox">
-                <input type="text" placeholder="Enter Todo Item" name='todoItem' class="appForm">
-                <select name="packingList" class="appForm">
-                    <option value="null">Where to pack?</option>
-                    <option value="Carry-on">Carry-on</option>
-                    <option value="Checked Luggage">Checked Luggage</option>
-                    <option value="Personal Bag">Personal Bag</option>
-                    <option value="Other">Other</option>
+            <h1>You've spent 80% of your budget</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste?</p>
+            
+            <!-- Add Expenses -->
+            <form action="/expenses/addExpense" method='POST' class="flexBox">
+                <input type="text" placeholder="Expense Name" name='expenseName' class="appForm">
+                <select name="category" class="appForm">
+                    <option value="null">Expense Category</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Content/SEO">Content/SEO</option>
+                    <option value="Paid Search">Paid Search</option>
+                    <option value="Paid Search">Email</option>
                 </select>
+                <input type="number" placeholder="Cost" name='cost' class="appForm">
+                <p>Is this a recurring expense?</p>
+                <input type="radio" id="recurring" name="recurring" value="yes" checked />
+                <label for="recurring">Yes</label>
+                <input type="radio" id="nonrecurring" name="recurring" value="no" />
+                <label for="recurring">No</label>
                 <input type="submit">
             </form>
         </div>
         <div class="spacer"></div>
-        <div class="hero">
-            <h3>There are <strong><%= left %></strong> things left to pack!</h3>
-        </div>
-        <div class="spacer"></div>
+
+        <!-- Expense Categories -->
         <div class="flexBox twoCol gap2">
             <div class="card">
-                <h3>Carry-On Luggage</h3>
+                <h3>Social Media</h3>
                 <ul>
-                    <% todos.filter((list)=> list.packingList === "Carry-on").forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="check">
-                                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash del'></span>
-                            </li>
+                    <% expense.filter((item)=> item.category === "Social Media").forEach( el => { %>
+                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
-                <h3>Checked Luggage</h3>
+                <h3>Content/SEO</h3>
                 <ul>
-                    <% todos.filter((list)=> list.packingList === "Checked Luggage").forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="check">
-                                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash del'> </span>
-                            </li>
+                    <% expense.filter((item)=> item.category === "Content/SEO").forEach( el => { %>
+                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
                     <% }) %>    
                 </ul>
             </div>
@@ -76,29 +74,23 @@
         <div class="spacer"></div>
         <div class="flexBox twoCol gap2">
             <div class="card">
-                <h3>Personal Bag</h3>
+                <h3>Paid Search</h3>
                 <ul>
-                    <% todos.filter((list)=> list.packingList === "Personal Bag").forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="check">
-                                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash del'></span>
-                            </li>
+                    <% expense.filter((item)=> item.category === "Paid Search").forEach( el => { %>
+                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
-                <h3>Other</h3>
+                <h3>Email</h3>
                 <ul>
-                    <% todos.filter((list)=> list.packingList === "Other").forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'>
-                                <input type="checkbox" class="check"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash del'></span>
-                            </li>
+                    <% expense.filter((item)=> item.category === "Email").forEach( el => { %>
+                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
                     <% }) %>    
                 </ul>
             </div>
         </div>
-        
+
     </section>
     <script src="js/main.js"></script>
 </body>
