@@ -5,7 +5,8 @@ module.exports = {
         console.log(req.user)
         try{
             const expenseItems = await Expense.find({userId:req.user.id})
-            res.render('expenses.ejs', {expense: expenseItems, user: req.user})
+            const totalExpenses = expenseItems.reduce((sum, expense) => sum + expense.cost, 0)
+            res.render('expenses.ejs', {expense: expenseItems, user: req.user, total: totalExpenses})
         }catch(err){
             console.log(err)
         }
@@ -13,7 +14,11 @@ module.exports = {
     addExpense: async (req, res)=>{
         try{
             //add 'recurring: true' if default doesn't work
-            await Expense.create({expenseName: req.body.expenseName, cateogry: req.body.category, cost: req.body.cost, userId: req.user.id})
+            await Expense.create({
+                expenseName: req.body.expenseName, 
+                category: req.body.category, 
+                cost: req.body.cost, 
+                userId: req.user.id})
             console.log('Expense has been added!')
             res.redirect('/expenses')
         }catch(err){

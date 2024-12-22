@@ -28,25 +28,25 @@
     <section class="innerContainer">
         <!-- Hero -->
         <div class="hero">
-            <h1>You've spent 80% of your budget</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, iste?</p>
+            <h1>You've met 80% of your budget</h1>
+            <p>You've spent $<%= total %>, of your $10000 budget</p>
             
             <!-- Add Expenses -->
             <form action="/expenses/addExpense" method='POST' class="flexBox">
                 <input type="text" placeholder="Expense Name" name='expenseName' class="appForm">
-                <select name="category" class="appForm">
-                    <option value="null">Expense Category</option>
+                <select name="category" class="appForm" required>
+                    <option value="" disabled selected>Expense Category</option>
                     <option value="Social Media">Social Media</option>
                     <option value="Content/SEO">Content/SEO</option>
                     <option value="Paid Search">Paid Search</option>
-                    <option value="Paid Search">Email</option>
+                    <option value="Email">Email</option>
                 </select>
                 <input type="number" placeholder="Cost" name='cost' class="appForm">
                 <p>Is this a recurring expense?</p>
                 <input type="radio" id="recurring" name="recurring" value="yes" checked />
                 <label for="recurring">Yes</label>
                 <input type="radio" id="nonrecurring" name="recurring" value="no" />
-                <label for="recurring">No</label>
+                <label for="nonrecurring">No</label>
                 <input type="submit">
             </form>
         </div>
@@ -56,17 +56,27 @@
         <div class="flexBox twoCol gap2">
             <div class="card">
                 <h3>Social Media</h3>
+                <h4>Total Spend: $<%= expense
+                        .filter((item)=> item.category === "Social Media")
+                        .reduce((sum, expense) => sum + expense.cost, 0)
+                        .toLocaleString() %>
+                </h4>
                 <ul>
                     <% expense.filter((item)=> item.category === "Social Media").forEach( el => { %>
-                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
+                        <li class='expenseName' data-id='<%=el._id%>'><%= el.expenseName %>: $<%= el.cost %><span class='fa fa-trash del'></span></li>                                     
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
                 <h3>Content/SEO</h3>
+                <h4>Total Spend: $<%= expense
+                        .filter((item)=> item.category === "Content/SEO")
+                        .reduce((sum, expense) => sum + expense.cost, 0)
+                        .toLocaleString() %>
+                </h4>
                 <ul>
                     <% expense.filter((item)=> item.category === "Content/SEO").forEach( el => { %>
-                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
+                        <li class='expenseName' data-id='<%=el._id%>'><%= el.expenseName %>: $<%= el.cost %><span class='fa fa-trash del'></span></li>                           
                     <% }) %>    
                 </ul>
             </div>
@@ -75,17 +85,27 @@
         <div class="flexBox twoCol gap2">
             <div class="card">
                 <h3>Paid Search</h3>
+                <h4>Total Spend: $<%= expense
+                        .filter((item)=> item.category === "Paid Search")
+                        .reduce((sum, expense) => sum + expense.cost, 0)
+                        .toLocaleString() %>
+                </h4>
                 <ul>
                     <% expense.filter((item)=> item.category === "Paid Search").forEach( el => { %>
-                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
+                        <li class='expenseName' data-id='<%=el._id%>'><%= el.expenseName %>: $<%= el.cost %><span class='fa fa-trash del'></span></li>                                      
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
                 <h3>Email</h3>
+                <h4>Total Spend: $<%= expense
+                        .filter((item)=> item.category === "Email")
+                        .reduce((sum, expense) => sum + expense.cost, 0)
+                        .toLocaleString('en-US') %>
+                </h4>
                 <ul>
                     <% expense.filter((item)=> item.category === "Email").forEach( el => { %>
-                        <li class='expenseItem' data-id='<%=el._id%>'><span class='fa fa-trash del'></span></li>                                     
+                        <li class='expenseName' data-id='<%=el._id%>'><%= el.expenseName %>: $<%= el.cost %><span class='fa fa-trash del'></span></li>                                    
                     <% }) %>    
                 </ul>
             </div>
