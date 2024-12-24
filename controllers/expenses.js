@@ -25,6 +25,27 @@ module.exports = {
             console.log(err)
         }
     },
+    // getBudgets: async (req,res)=>{
+    //         console.log(req.user)
+    //         try{
+    //             const total = await Budget.find({userId:req.user.id})
+    //             res.render('expenses.ejs', {budget: total, user: req.user})
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+    //     },
+    // createBudget: async (req, res)=>{
+    //     try{
+    //         await Budget.create({
+    //             totalBudget: req.body.totalBudget, 
+    //             budgetType: req.body.budgetType, 
+    //             userId: req.user.id})
+    //         console.log('Budget has been added!')
+    //         res.redirect('/expenses')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
     // updateExpense: async (req, res)=>{
     //     try{
     //         await Expense.findOneAndUpdate({_id:req.body.expenseIdFromJSFile},{

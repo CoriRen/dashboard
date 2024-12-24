@@ -5,7 +5,7 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, budgetController.getBudget)
 router.post('/createBudget', budgetController.createBudget)
-router.put('/updateBudget', budgetController.updateBudget)
-router.delete('/deleteBudget', budgetController.deleteBudget)
+// router.put('/updateBudget', budgetController.updateBudget)
+// router.delete('/deleteBudget', budgetController.deleteBudget)
 
 module.exports = router;

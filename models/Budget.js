@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 
 const BudgetSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  allotedBudget: {
+  totalBudget: {
     type: Number,
-    required: true,
+    required: true
+  },
+  budgetType: {
+    type: String,
+    default: "monthly",
+    required: true
   },
   userId: {
     type: String,

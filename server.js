@@ -12,7 +12,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const expenseRoutes = require('./routes/expenses')
-// const budgetRoutes = require('./routes/budget')
+const budgetRoutes = require('./routes/budget')
 
 //module to read .env file
 require('dotenv').config({path: './config/.env'})
@@ -50,6 +50,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 // app.use('/budget', budgetRoutes)
 app.use('/expenses', expenseRoutes)
+app.use('/budget', budgetRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port ${process.env.PORT}`)

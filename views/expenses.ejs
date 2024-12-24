@@ -29,27 +29,40 @@
         <!-- Hero -->
         <div class="hero">
             <h1>You've met 80% of your budget</h1>
-            <p>You've spent $<%= total %>, of your $10000 budget</p>
-            
-            <!-- Add Expenses -->
-            <form action="/expenses/addExpense" method='POST' class="flexBox">
-                <input type="text" placeholder="Expense Name" name='expenseName' class="appForm">
-                <select name="category" class="appForm" required>
-                    <option value="" disabled selected>Expense Category</option>
-                    <option value="Social Media">Social Media</option>
-                    <option value="Content/SEO">Content/SEO</option>
-                    <option value="Paid Search">Paid Search</option>
-                    <option value="Email">Email</option>
-                </select>
-                <input type="number" placeholder="Cost" name='cost' class="appForm">
-                <p>Is this a recurring expense?</p>
-                <input type="radio" id="recurring" name="recurring" value="yes" checked />
-                <label for="recurring">Yes</label>
-                <input type="radio" id="nonrecurring" name="recurring" value="no" />
-                <label for="nonrecurring">No</label>
-                <input type="submit">
-            </form>
+            <p>You've spent $<%= total %>, of your budget</p>
         </div>
+
+        <!-- Add Total Budget -->
+        <form action="/budget/createBudget" method='POST' class="flexBox">
+            <input type="number" placeholder="Total Budget" name='totalBudget' class="appForm">
+            <p>Budget Type</p>
+            <!-- <input type="radio" id="monthly" name="budgetType" value="monthly" checked />
+            <label for="monthly">Monthly</label>
+            <input type="radio" id="yearly" name="budgetType" value="yearly" />
+            <label for="yearly">Yearly</label> -->
+            <input type="submit">
+        </form>
+        
+        <div class="spacer"></div>
+        
+        <!-- Add Expenses -->
+        <form action="/expenses/addExpense" method='POST' class="flexBox">
+            <input type="text" placeholder="Expense Name" name='expenseName' class="appForm">
+            <select name="category" class="appForm" required>
+                <option value="" disabled selected>Expense Category</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Content/SEO">Content/SEO</option>
+                <option value="Paid Search">Paid Search</option>
+                <option value="Email">Email</option>
+            </select>
+            <input type="number" placeholder="Cost" name='cost' class="appForm">
+            <p>Is this a recurring expense?</p>
+            <input type="radio" id="recurring" name="recurring" value="yes" checked />
+            <label for="recurring">Yes</label>
+            <input type="radio" id="nonrecurring" name="recurring" value="no" />
+            <label for="nonrecurring">No</label>
+            <input type="submit">
+        </form>
         <div class="spacer"></div>
 
         <!-- Expense Categories -->
